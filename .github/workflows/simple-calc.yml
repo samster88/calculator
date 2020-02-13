@@ -25,10 +25,15 @@ def display():
           "2.Subtract\n"\
           "3.Multiply\n"\
           "4.Divide\n"\
-          "===============")
-
+          "===============")     
+    
 #Function for action
 def action():
+    choice=input("Enter choice(1/2/3/4): ")
+    time.sleep(0.2)
+    num1=float(input("Enter 1st number = "))
+    time.sleep(0.2)
+    num2=float(input("Enter 2nd number = "))
     if choice =='1':
         print(num1,'+',num2,'=',add(num1,num2))
     elif choice =='2':
@@ -36,16 +41,30 @@ def action():
     elif choice =='3':
         print(num1,'*',num2,'=',multiply(num1,num2))
     elif choice =='4':
-        print(num1,'/',num2,'=',divide(num1,num2))
+        print(num1,'/',num2,'=',divide(num1,num2))    
     else:
         print("Invalid Input")
+    calcAgain()    
+
+#Function for calculating again
+def calcAgain():
+    print("===================================")
+    calc_again = input('''
+    Do you want to calculate again?
+    Please type Y for Yes and N for No
+    ''')
+    
+    print("===================================")
+    if calc_again.upper() == 'Y':
+        display()
+        time.sleep(0.2)
+        action()
+    elif calc_again.upper() == 'N':
+        print("See you later")
+    else:
+        calcAgain()
 
 display()
 time.sleep(0.3)
-choice=input("Enter choice(1/2/3/4): ")
-time.sleep(0.2)
-num1=float(input("Enter 1st number = "))
-time.sleep(0.2)
-num2=float(input("Enter 2nd number = "))
-time.sleep(0.8)
 action()
+time.sleep(0.2)
