@@ -1,51 +1,87 @@
-#Program for simple calculator
+# Program to make simple calculator
+
+# time sleep module
 import time
 
-#Function to add
+print("Welcome to Simple Calculator")
+
+# Function for addition
 def add(num1,num2):
-    return (num1 + num2)
+    return(num1 + num2)
 
-#Function to subtract
-def subtract(num1,num2):
-    return (num1 - num2)
+# Function for subtraction
+def sub(num1,num2):
+    return(num1 - num2)
 
-#Function to multiply
+# Function for multiplication
 def multiply(num1,num2):
-    return (num1 * num2)
+    return(num1 * num2)
 
-#Function to divide
+# Function for divide
 def divide(num1,num2):
-    return (num1 / num2)
+    return(num1 / num2)
 
-#Function to print selection
+# Function to display option for operation
 def display():
     print("Select Operation")
-    print("===============\n"\
+    print("=================\n"\
           "1.Addition\n"\
-          "2.Subtract\n"\
-          "3.Multiply\n"\
-          "4.Divide\n"\
-          "===============")
+          "2.Subtraction\n"\
+          "3.Multiplication\n"\
+          "4.Division\n"\
+          "==================")
 
-#Function for action
+# Function for user input
+def inputNumber(message):
+    while True:
+        try:
+            userInput = int(input(message))
+        except ValueError:
+            print("Invalid Input")
+            time.sleep(1.2)
+            print("Please enter valid input")
+            continue
+        else:
+            return userInput
+
+# Function for actiom
 def action():
-    if choice =='1':
+    choice = input("Enter choice(1/2/3/4): ")
+    time.sleep(0.2)
+    num1 = float(inputNumber("Enter 1st number = "))
+    time.sleep(0.2)
+    num2 = float(inputNumber("Enter 2nd number = "))
+    if choice == '1':
         print(num1,'+',num2,'=',add(num1,num2))
-    elif choice =='2':
-        print(num1,'-',num2,'=',subtract(num1,num2))
-    elif choice =='3':
+    elif choice == '2':
+        print(num1,'-',num2,'=',sub(num1,num2))
+    elif choice == '3':
         print(num1,'*',num2,'=',multiply(num1,num2))
-    elif choice =='4':
+    elif choice == '4':
         print(num1,'/',num2,'=',divide(num1,num2))
     else:
         print("Invalid Input")
+    calcAgain()
 
+# Function for calculation again
+def calcAgain():
+    print("=============================")
+    calc_again = input('''
+    Do you want to calculate again?
+    Please type Y for Yes and N for No
+    ''')
+    print("=============================")
+    if calc_again.upper() == 'Y':
+        display()
+        time.sleep(0.2)
+        action()
+    elif calc_again.upper() == 'N':
+        print("See you later, Have a nice day")
+    else:
+        calcAgain()
+
+# Function call for above function definition
 display()
-time.sleep(0.3)
-choice=input("Enter choice(1/2/3/4): ")
 time.sleep(0.2)
-num1=float(input("Enter 1st number = "))
-time.sleep(0.2)
-num2=float(input("Enter 2nd number = "))
-time.sleep(0.8)
 action()
+time.sleep(0.2)
